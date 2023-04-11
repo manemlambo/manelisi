@@ -1,2 +1,0 @@
-# manelisi
- my portfolio website
