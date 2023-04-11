@@ -80,9 +80,9 @@ p.result {
   margin: 20px 0 0;
   text-align: center;
 }
-/* bigger screens */
-@media (min-width: 1000px) {
-  /* CSS styles go here */
+
+/* Styles for mobile */
+@media only screen and (max-width: 599px) {
   body {
     margin: 0;
   }
@@ -116,7 +116,7 @@ p.result {
 }
 
 /* Styles for desktop (more modern mobiles phones than anything) */
-@media only screen and (min-width: 600px) {
+@media screen and (min-width: 600px) and (max-width:999px){
   p#totalCost {
     font-size: 2em;
     font-weight: lighter;
@@ -155,8 +155,9 @@ p.result {
   }
 }
 
-/* Styles for mobile */
-@media only screen and (max-width: 599px) {
+  /* bigger screens */
+@media (min-width: 1000px) {
+  /* CSS styles go here */
   body {
     margin: 0;
   }
