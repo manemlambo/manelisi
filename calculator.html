@@ -80,8 +80,42 @@ p.result {
   margin: 20px 0 0;
   text-align: center;
 }
+/* bigger screens */
+@media (min-width: 1000px) {
+  /* CSS styles go here */
+  body {
+    margin: 0;
+  }
 
-/* Styles for desktop */
+  .container {
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  input[type="number"] {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-size: 1em;
+  }
+
+  button {
+    font-size: 1.2em;
+    width: 100%;
+  }
+
+  p.result {
+    font-size: 1.5em;
+  }
+}
+
+/* Styles for desktop (more modern mobiles phones than anything) */
 @media only screen and (min-width: 600px) {
   p#totalCost {
     font-size: 2em;
