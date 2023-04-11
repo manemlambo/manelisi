@@ -24,9 +24,9 @@
     max-width: 100%;
     height: auto;
   } */
-  
-  /* Header styles */
-  /* header {
+
+/* Header styles */
+/* header {
     background-color: #212121;
     color: #fff;
     padding: 20px;
@@ -42,9 +42,9 @@
     margin-top: 10px;
     font-size: 1.5rem;
   } */
-  
-  /* Main styles */
-  /* main {
+
+/* Main styles */
+/* main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 50px 20px;
@@ -57,10 +57,10 @@
   section h2 {
     font-size: 2rem;
     margin-bottom: 20px; */
-    /* height: 700px; */
-  /* } */
-  
-  /* .gallery {
+/* height: 700px; */
+/* } */
+
+/* .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
@@ -109,8 +109,8 @@
     transform: translateY(0);
   }
    */
-  /* Business Venture styles */
-  /* .business-item {
+/* Business Venture styles */
+/* .business-item {
     background-color: #fff;
     padding: 20px;
     border-radius: 4px;
@@ -130,9 +130,9 @@
     display: block;
     margin-top: 10px;
   } */
-  
-  /* Footer styles */
-  /* footer {
+
+/* Footer styles */
+/* footer {
     background-color: #212121;
     color: #fff;
     padding: 20px;
@@ -148,10 +148,11 @@
       grid-template-columns: 1fr;
     }
   } */
-  
 
-  /* Global styles */
-html, body {
+
+/* Global styles */
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
@@ -159,7 +160,12 @@ html, body {
   background-color: #f5f5f5;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   color: #111;
 }
@@ -215,6 +221,7 @@ section h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  height: 200px;
 }
 
 .gallery-item {
@@ -267,6 +274,7 @@ section h2 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
 .business-item h3 {
   margin-top: 0;
   font-size: 1.5rem;
@@ -291,6 +299,7 @@ footer {
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
+
   /* Adjustments for mobile devices */
   header h1 {
     font-size: 2.5rem;
@@ -309,7 +318,7 @@ footer {
   }
 
   .gallery {
-    height: auto;
+    height: 200px;
   }
 
   .gallery-item {
@@ -333,6 +342,3 @@ footer {
     font-size: 1rem;
   }
 }
-
-
- 
