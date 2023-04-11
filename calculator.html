@@ -80,39 +80,72 @@ p.result {
   margin: 20px 0 0;
   text-align: center;
 }
-body {
+
+/* Styles for desktop */
+@media only screen and (min-width: 600px) {
+  body {
     margin-left: 400px;
     margin-right: 400px;
+  }
+
+  .container {
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+  }
+
+  input[type="number"] {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-size: 1.2em;
+  }
+
+  button {
+    font-size: 1.5em;
+    width: 50%;
+  }
+
+  p.result {
+    font-size: 2em;
+  }
 }
-/* Specific styles for calculator */
-.container {
-  background-color: #fff;
-  border: 2px solid #333;
-  border-radius: 5px;
+
+/* Styles for mobile */
+@media only screen and (max-width: 599px) {
+  body {
+    margin: 0;
+  }
+
+  .container {
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  input[type="number"] {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-size: 1em;
+  }
+
+  button {
+    font-size: 1.2em;
+    width: 100%;
+  }
+
+  p.result {
+    font-size: 1.5em;
+  }
 }
-
-input[type="number"] {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-label {
-  font-size: 1.2em;
-}
-
-button {
-  font-size: 1.5em;
-  width: 50%;
-}
-
-p.result {
-  font-size: 2em;
-}
-
-
-
-
-
   </style>
   <script>
     
@@ -157,3 +190,6 @@ p.result {
   <p id="totalCost">Profit: R0.00</p>
 </body>
 </html>
+
+
+
