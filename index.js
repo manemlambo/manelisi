@@ -40,6 +40,18 @@
 // animateGallery();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 // // Get all gallery elements on the page
 // const galleries = document.querySelectorAll('.gallery');
 
@@ -86,6 +98,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 // const gallery = document.querySelector('.gallery');
 // const items = document.querySelectorAll('.gallery-item');
 // const itemCount = items.length;
@@ -126,6 +148,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 // const gallery = document.querySelector('.gallery');
 // const items = document.querySelectorAll('.gallery-item');
 // const itemCount = items.length;
@@ -163,3 +195,17 @@
 // // Set gallery width and start animation
 // setGalleryWidth();
 // animateGallery();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
