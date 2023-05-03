@@ -16,7 +16,7 @@ body {
   display: flex;
   align-items: center;
 } */
-p#totalCost {
+p#netProfit {
 color: black;
 font-size: 1.5em;
 /* align-content: center; */
@@ -125,9 +125,12 @@ p.result {
     var customerShipping = parseFloat(document.getElementById("customerShipping").value);
     var numberOfProducts = parseInt(document.getElementById("numberOfProducts").value);
   
-    var totalCost = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * salePrice)) - (shippingPrice * (exchangeRate)) -  customerShipping;
+    var netProfit = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * salePrice)) - (shippingPrice * (exchangeRate)) -  customerShipping;
+    var netCost = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * 0)) - (shippingPrice * (exchangeRate)) -  customerShipping;
 
-    document.getElementById("totalCost").innerHTML = "Total Cost: R" + totalCost.toFixed(2);
+
+    document.getElementById("netProfit").innerHTML = "Profit: R" + netProfit.toFixed(2);
+    document.getElementById("netCost").innerHTML = "Cost: R" + netCost.toFixed(2);
   }
     
   </script>
@@ -154,6 +157,7 @@ p.result {
 
   <button onclick="calculate()">Calculate</button>
 
-  <p id="totalCost">Profit: R0.00</p>
+  <p id="netProfit">Profit: R0.00</p>
+  <p id="netCost">Cost: R0.00</p>
 </body>
 </html>
