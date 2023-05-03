@@ -16,7 +16,7 @@ body {
   display: flex;
   align-items: center;
 } */
-p#netProfit {
+p#Profit {
 color: black;
 font-size: 1.5em;
 /* align-content: center; */
@@ -80,41 +80,216 @@ p.result {
   margin: 20px 0 0;
   text-align: center;
 }
-body {
-    margin-left: 400px;
-    margin-right: 400px;
+
+/* Styles for mobile */
+@media only screen and (max-width: 599px) {
+  body {
+    margin: 0;
+  }
+
+  .container {
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  input[type="number"] {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-size: 1em;
+  }
+
+  button {
+    font-size: 1.2em;
+    width: 100%;
+  }
+
+  p.result {
+    font-size: 1.5em;
+  }
 }
-/* Specific styles for calculator */
-.container {
-  background-color: #fff;
-  border: 2px solid #333;
-  border-radius: 5px;
+
+/* Styles for desktop (more modern mobiles phones than anything) */
+@media screen and (min-width: 600px) and (max-width:999px){
+  p#Profit {
+    font-size: 2em;
+    /* font-weight: lighter; */
+  }
+  body {
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 170px;
+    font-size: 1.3em;
+  }
+
+  .container {
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+  }
+
+  input[type="number"] {
+    font-size: 2em;
+    margin-bottom: 1.2em;
+    padding: 25px;
+  }
+
+  label {
+    font-size: 2em;
+  }
+
+  button {
+    font-size: 2.5em;
+    width: 65%;
+    padding: 0.4em;
+  }
+
+  p.result {
+    font-size: 2em;
+  }
 }
 
-input[type="number"] {
-  font-size: 1.5em;
-  margin-bottom: 10px;
+  /* bigger screens */
+@media (min-width: 1000px) {
+  /* CSS styles go here */
+  body {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    margin-left: 300px;
+    margin-right: 300px;
+    }
+
+  .container {
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  input[type="number"] {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-size: 1em;
+  }
+
+  button {
+    font-size: 1.2em;
+    width: 50%;
+  }
+
+  p.result {
+    font-size: 1.5em;
+  }
+
+  
+
+
 }
 
-label {
-  font-size: 1.2em;
+/* for the history */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.78);
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  padding-top: 10%;
 }
-
-button {
-  font-size: 1.5em;
-  width: 50%;
+.modal h2 {
+color: white;
+margin-right: 30px;
+display: block;
+margin-inline: 39%;
 }
-
-p.result {
-  font-size: 2em;
+.history-container {
+  max-height: 300px;
+  overflow-y: scroll;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 0 100px;
 }
-
-
-
-
-
   </style>
-  <script>
+
+<script>
+  // Define an empty array to store calculation history
+  const calculations = [];
+
+  function calculate() {
+    var productCost = parseFloat(document.getElementById("productCost").value);
+    var exchangeRate = parseFloat(document.getElementById("exchangeRate").value);
+    var salePrice = parseFloat(document.getElementById("salePrice").value);
+    var shippingPrice = parseFloat(document.getElementById("shippingPrice").value);
+    var customerShipping = parseFloat(document.getElementById("customerShipping").value);
+    var numberOfProducts = parseInt(document.getElementById("numberOfProducts").value);
+  
+    var Profit = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * salePrice)) - (shippingPrice * (exchangeRate)) -  customerShipping;
+
+    document.getElementById("Profit").innerHTML = "Profit: R" + Profit.toFixed(2);
+
+    // Add the calculation to the history array
+    calculations.push(`Product cost: ${productCost}, Exchange rate: ${exchangeRate}, Sale price: ${salePrice}, Shipping price: ${shippingPrice}, Customer shipping: ${customerShipping}, Number of products: ${numberOfProducts}, Profit: ${Profit.toFixed(2)}`);
+
+    // Show the history button
+    document.getElementById("historyButton").style.display = "block";
+  }
+
+  // Show the calculation history
+  function showHistory() {
+    // Create a modal dialog element
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+
+    // Create a header for the modal
+    const header = document.createElement("h2");
+    header.textContent = "Last 20 calculations";
+
+    // Create a container for the calculation history
+    const historyContainer = document.createElement("div");
+    historyContainer.classList.add("history-container");
+
+    // Add each calculation to the history container
+    calculations.slice(-20).forEach((calculation) => {
+      const calculationElement = document.createElement("p");
+      calculationElement.textContent = calculation;
+      historyContainer.appendChild(calculationElement);
+    });
+
+    // Add the header and history container to the modal
+    modal.appendChild(header);
+    modal.appendChild(historyContainer);
+
+    // Add the modal to the document body
+    document.body.appendChild(modal);
+
+    // Remove the modal from the document body when it is closed
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        document.body.removeChild(modal);
+      }
+    });
+  }
+</script>
+
+
+
+  <!-- <script>
     
       // Paste the JS code here
       function calculate() {
@@ -125,13 +300,47 @@ p.result {
     var customerShipping = parseFloat(document.getElementById("customerShipping").value);
     var numberOfProducts = parseInt(document.getElementById("numberOfProducts").value);
   
-    var netProfit = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * salePrice)) - (shippingPrice * (exchangeRate)) -  customerShipping;
-    var netCost = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * 0)) - (shippingPrice * (exchangeRate)) -  customerShipping;
+    var Profit = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * salePrice)) - (shippingPrice * (exchangeRate)) -  customerShipping;
 
+    document.getElementById("Profit").innerHTML = "Total Cost: R" + Profit.toFixed(2);
 
-    document.getElementById("netProfit").innerHTML = "Profit: R" + netProfit.toFixed(2);
-    document.getElementById("netCost").innerHTML = "Cost: R" + netCost.toFixed(2);
-  }
+    // history button
+    function showHistory() {
+  // Create a modal dialog element
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+
+  // Create a header for the modal
+  const header = document.createElement("h2");
+  header.textContent = "Last 20 calculations";
+
+  // Create a container for the calculation history
+  const historyContainer = document.createElement("div");
+  historyContainer.classList.add("history-container");
+
+  // Add each calculation to the history container
+  calculations.forEach((calculation) => {
+    const calculationElement = document.createElement("p");
+    calculationElement.textContent = calculation;
+    historyContainer.appendChild(calculationElement);
+  });
+
+  // Add the header and history container to the modal
+  modal.appendChild(header);
+  modal.appendChild(historyContainer);
+
+  // Add the modal to the document body
+  document.body.appendChild(modal);
+
+  // Remove the modal from the document body when it is closed
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      document.body.removeChild(modal);
+    }
+  });
+}
+
+  } -->
     
   </script>
 </head>
@@ -156,8 +365,12 @@ p.result {
   <input type="number" id="numberOfProducts" value="0"><br>
 
   <button onclick="calculate()">Calculate</button>
+  <button onclick="showHistory()">History</button>
 
-  <p id="netProfit">Profit: R0.00</p>
-  <p id="netCost">Cost: R0.00</p>
+
+  <p id="Profit">Profit: R0.00</p>
 </body>
 </html>
+
+
+
