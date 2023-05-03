@@ -240,8 +240,10 @@ margin-inline: 39%;
     var numberOfProducts = parseInt(document.getElementById("numberOfProducts").value);
   
     var Profit = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * salePrice)) - (shippingPrice * (exchangeRate)) -  customerShipping;
+    var Cost = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * 0)) - (shippingPrice * (exchangeRate)) -  customerShipping;
 
     document.getElementById("Profit").innerHTML = "Profit: R" + Profit.toFixed(2);
+    document.getElementById("Cost").innerHTML = "Cost: R" + Cost.toFixed(2);
 
     // Add the calculation to the history array
     calculations.push(`Product cost: ${productCost}, Exchange rate: ${exchangeRate}, Sale price: ${salePrice}, Shipping price: ${shippingPrice}, Customer shipping: ${customerShipping}, Number of products: ${numberOfProducts}, Profit: ${Profit.toFixed(2)}`);
@@ -369,6 +371,8 @@ margin-inline: 39%;
 
 
   <p id="Profit">Profit: R0.00</p>
+  <p id="Cost">Cost: R0.00</p>
+
 </body>
 </html>
 
