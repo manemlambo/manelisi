@@ -240,7 +240,11 @@ margin-inline: 39%;
     var numberOfProducts = parseInt(document.getElementById("numberOfProducts").value);
   
     var Profit = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * salePrice)) - (shippingPrice * (exchangeRate)) -  customerShipping;
+    //  Profit = 
+    
     var Cost = numberOfProducts * ((1 * productCost) * (-exchangeRate) + (1 * 0)) - (shippingPrice * (exchangeRate)) -  customerShipping;
+    //         
+    var Bank = Profit + Cost;
 
     document.getElementById("Profit").innerHTML = "Profit: R" + Profit.toFixed(2);
     document.getElementById("Cost").innerHTML = "Cost: R" + Cost.toFixed(2);
