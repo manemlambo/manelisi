@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chicken Business Calculator</h1>
+
+  <div>
+    <h2>Input Section</h2>
+    <label for="varX">Number of Layers (varX): </label>
+    <input type="number" id="varX"><br>
+
+    <label for="varP">Price (varP): </label>
+    <input type="number" id="varP"><br>
+
+    <label for="varLR">Lay Rate (%) (varLR): </label>
+    <input type="number" id="varLR"><br>
+
+    <label for="varCSP">Crate Selling Price (varCSP): </label>
+    <input type="number" id="varCSP"><br>
+
+    <label for="varN">Average Lay Span (varN): </label>
+    <input type="number" id="varN"><br>
+
+    <label for="varRD">Dollar to Rand Exchange Rate (varRD): </label>
+    <input type="number" id="varRD"><br>
+  </div>
+
+  <button onclick="calculateProfit()">Calculate Profit</button>
+
+  <div>
+    <h2>Output Section</h2>
+    <p>Once-Off Cost (varOC): <span id="varOC"></span></p>
+    <p>Lay No. (varLXd): <span id="varLXd"></span></p>
+    <p>Number of Crates (varCrated): <span id="varCrated"></span></p>
+    <p>Crate Revenue p/Week (varCRW): <span id="varCRW"></span></p>
+    <p>Crate Revenue p/6-Weeks (SIXCR): <span id="SIXCR"></span></p>
+    <p>6-Week Cost (SIXC): <span id="SIXC"></span></p>
+    <p>6-Week Profit (SIXP): <span id="SIXP"></span></p>
+    <p>Average Life-Time Value (varLTV): <span id="varLTV"></span></p>
+    <p>Value per Year (varRPY): <span id="varRPY"></span></p>
+    <p>Value per Month (varRPM): <span id="varRPM"></span></p>
+  </div>
+
+  <hr> <!-- Separating the Rand (ZAR) output section -->
+
+  <div>
+    <h2>Rand (ZAR) Output Section</h2>
+    <p>Once-Off Cost (varOC): <span id="varOC_ZAR"></span></p>
+    <p>6-Week Profit (SIXP): <span id="SIXP_ZAR"></span></p>
+    <p>Value per Year (varRPY): <span id="varRPY_ZAR"></span></p>
+    <p>Value per Month (varRPM): <span id="varRPM_ZAR"></span></p>
+  </div>
+
+  <script>
+    function calculateProfit() {
+      var varX = parseFloat(document.getElementById("varX").value);
+      var varP = parseFloat(document.getElementById("varP").value);
+      var varLR = parseFloat(document.getElementById("varLR").value);
+      var varCSP = parseFloat(document.getElementById("varCSP").value);
+      var varN = parseFloat(document.getElementById("varN").value);
+      var varRD = parseFloat(document.getElementById("varRD").value);
+
+      // Calculate varOC
+      var varOC = (varX * varP).toFixed(2);
+      document.getElementById("varOC").textContent = varOC;
+
+      // Calculate varLXd
+      var varLXd = ((varLR / 100) * varX).toFixed(2);
+      document.getElementById("varLXd").textContent = varLXd;
+
+      // Calculate varCrated
+      var varCrated = (varLXd / 30).toFixed(2);
+      document.getElementById("varCrated").textContent = varCrated;
+
+      // Calculate varCRW
+      var varCRW = ((varCrated * varCSP * 7).toFixed(2));
+      document.getElementById("varCRW").textContent = varCRW;
+
+      // Calculate SIXCR
+      var SIXCR = (varCRW * 6).toFixed(2);
+      document.getElementById("SIXCR").textContent = SIXCR;
+
+      // Calculate SIXC
+      var SIXC = (3 * varX).toFixed(2);
+      document.getElementById("SIXC").textContent = SIXC;
+
+      // Calculate SIXP
+      var SIXP = (SIXCR - SIXC).toFixed(2);
+      document.getElementById("SIXP").textContent = SIXP;
+
+      // Calculate varLTV
+      var varLTV = (SIXP * (varN * 52.143 / 6)).toFixed(2);
+      document.getElementById("varLTV").textContent = varLTV;
+
+      // Calculate varRPY
+      var varRPY = ((varRD * varLTV / varN).toFixed(2));
+      document.getElementById("varRPY").textContent = varRPY;
+
+      // Calculate varRPM
+      var varRPM = ((varRPY / 12).toFixed(2));
+      document.getElementById("varRPM").textContent = varRPM;
+
+      // Calculate and display the Rand (ZAR) results
+      var varOC_ZAR = (varRD * varOC).toFixed(2);
+      document.getElementById("varOC_ZAR").textContent = varOC_ZAR;
+
+      var SIXP_ZAR = (varRD * SIXP).toFixed(2);
+      document.getElementById("SIXP_ZAR").textContent = SIXP_ZAR;
+
+      var varRPY_ZAR = (varRD * varLTV / varN).toFixed(2);
+      document.getElementById("varRPY_ZAR").textContent = varRPY_ZAR;
+
+      var varRPM_ZAR = (varRPY_ZAR / 12).toFixed(2);
+      document.getElementById("varRPM_ZAR").textContent = varRPM_ZAR;
+    }
+  </script>
+</body>
+</html>
